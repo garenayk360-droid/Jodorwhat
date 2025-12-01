@@ -10,22 +10,27 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #fff5f0 0%, #ffe8dc 100%);
             min-height: 100vh;
             padding: 20px;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        /* Auth Screens */
         .auth-container {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 90vh;
         }
+
         .auth-box {
             background: white;
             padding: 40px;
@@ -34,34 +39,43 @@
             width: 100%;
             max-width: 450px;
         }
+
         .auth-box h1 {
             color: #ff6b35;
             margin-bottom: 10px;
             font-size: 32px;
         }
+
         .auth-box p {
             color: #666;
             margin-bottom: 30px;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             color: #333;
             font-weight: 500;
         }
+
         .form-group input {
             width: 100%;
             padding: 12px;
             border: 2px solid #ffe8dc;
             border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
+
         .form-group input:focus {
             outline: none;
             border-color: #ff6b35;
         }
+
         .btn {
             width: 100%;
             padding: 14px;
@@ -72,24 +86,574 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
+            transition: transform 0.2s;
         }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
         .auth-switch {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 20px;
             color: #666;
         }
+
         .auth-switch a {
             color: #ff6b35;
-            font-weight: bold;
             text-decoration: none;
+            font-weight: 600;
         }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #ffe0e0;
+            color: #d32f2f;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 28px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info span {
+            color: white;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: white;
+            color: #ff6b35;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Create Blog Section */
+        .create-blog {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-blog h2 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+        }
+
+        .create-blog input,
+        .create-blog textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ffe8dc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .create-blog textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .create-blog input:focus,
+        .create-blog textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        /* Blog List */
+        .blogs-container {
+            display: grid;
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h3 {
+            color: #ff6b35;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .blog-meta {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .blog-content {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .blog-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn-small:hover {
+            background: #ff8c42;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ffe8dc;
+        }
+
+        .comments-section h4 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .comment {
+            background: #fff5f0;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: #ff6b35;
+            font-size: 14px;
+        }
+
+        .comment-text {
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .comment-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .comment-form input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ffe8dc;
+            border-radius: 8px;
+        }
+
+        .comment-form input:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
         .hidden {
             display: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h2 style="text-align:center;color:#ff6b35;">Website Successfully Uploaded 🎉</h2>
-    <p style="text-align:center;color:#333;margin-top:10px;">Abhi yeh sample page dikh raha hai. Aap apna BlogHub code yahi replace kar sakte hain 😊</p>
-</body>
-</html>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="auth-container">
+        <div class="auth-box">
+            <h1>Welcome Back!</h1>
+            <p>Login to continue sharing your stories</p>
+            <div id="loginError" class="error-message"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a href="#" id="showSignup">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Screen -->
+    <div id="signupScreen" class="auth-container hidden">
+        <div class="auth-box">
+            <h1>Join BlogHub!</h1>
+            <p>Create an account to start blogging</p>
+            <div id="signupError" class="error-message"></div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a href="#" id="showLogin">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Screen -->
+    <div id="mainApp" class="container hidden">
+        <header>
+            <h1>📝 BlogHub</h1>
+            <div class="user-info">
+                <span>Welcome, <strong id="currentUser"></strong>!</span>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <div class="create-blog">
+            <h2>Create New Blog Post</h2>
+            <input type="text" id="blogTitle" placeholder="Enter blog title...">
+            <textarea id="blogContent" placeholder="Write your blog content here..."></textarea>
+            <button class="btn" id="publishBtn">Publish Blog</button>
+        </div>
+
+        <div id="blogsContainer" class="blogs-container"></div>
+    </div>
+
+    <script>
+        // Database simulation using memory storage
+        const db = {
+            users: [],
+            blogs: [],
+            comments: []
+        };
+
+        let currentUser = null;
+
+        // Initialize app
+        function init() {
+            // Load data from storage
+            loadFromStorage();
+            
+            // Check if user is logged in
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showMainApp();
+            }
+
+            // Event listeners
+            document.getElementById('showSignup').addEventListener('click', (e) => {
+                e.preventDefault();
+                showSignup();
+            });
+
+            document.getElementById('showLogin').addEventListener('click', (e) => {
+                e.preventDefault();
+                showLogin();
+            });
+
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('signupForm').addEventListener('submit', handleSignup);
+            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+            document.getElementById('publishBtn').addEventListener('click', publishBlog);
+        }
+
+        // Storage functions
+        function saveToStorage() {
+            try {
+                localStorage.setItem('blogUsers', JSON.stringify(db.users));
+                localStorage.setItem('blogPosts', JSON.stringify(db.blogs));
+                localStorage.setItem('blogComments', JSON.stringify(db.comments));
+            } catch (e) {
+                console.error('Storage error:', e);
+            }
+        }
+
+        function loadFromStorage() {
+            try {
+                const users = localStorage.getItem('blogUsers');
+                const blogs = localStorage.getItem('blogPosts');
+                const comments = localStorage.getItem('blogComments');
+
+                if (users) db.users = JSON.parse(users);
+                if (blogs) db.blogs = JSON.parse(blogs);
+                if (comments) db.comments = JSON.parse(comments);
+            } catch (e) {
+                console.error('Load error:', e);
+            }
+        }
+
+        // Auth functions
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+
+            // Check if user exists
+            if (db.users.find(u => u.email === email)) {
+                showError('signupError', 'Email already registered!');
+                return;
+            }
+
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password
+            };
+
+            db.users.push(newUser);
+            saveToStorage();
+
+            // Auto login
+            currentUser = { id: newUser.id, name: newUser.name, email: newUser.email };
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showMainApp();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = db.users.find(u => u.email === email && u.password === password);
+
+            if (!user) {
+                showError('loginError', 'Invalid email or password!');
+                return;
+            }
+
+            currentUser = { id: user.id, name: user.name, email: user.email };
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showMainApp();
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            sessionStorage.removeItem('currentUser');
+            showLogin();
+        }
+
+        // UI functions
+        function showSignup() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('signupScreen').classList.remove('hidden');
+            document.getElementById('mainApp').classList.add('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('signupScreen').classList.add('hidden');
+            document.getElementById('mainApp').classList.add('hidden');
+            document.getElementById('loginForm').reset();
+        }
+
+        function showMainApp() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('signupScreen').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            document.getElementById('currentUser').textContent = currentUser.name;
+            renderBlogs();
+        }
+
+        function showError(elementId, message) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+            }, 3000);
+        }
+
+        // Blog functions
+        function publishBlog() {
+            const title = document.getElementById('blogTitle').value.trim();
+            const content = document.getElementById('blogContent').value.trim();
+
+            if (!title || !content) {
+                alert('Please fill in both title and content!');
+                return;
+            }
+
+            const newBlog = {
+                id: Date.now(),
+                title,
+                content,
+                authorId: currentUser.id,
+                authorName: currentUser.name,
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString()
+            };
+
+            db.blogs.unshift(newBlog);
+            saveToStorage();
+
+            document.getElementById('blogTitle').value = '';
+            document.getElementById('blogContent').value = '';
+            renderBlogs();
+        }
+
+        function deleteBlog(blogId) {
+            if (confirm('Are you sure you want to delete this blog?')) {
+                db.blogs = db.blogs.filter(b => b.id !== blogId);
+                db.comments = db.comments.filter(c => c.blogId !== blogId);
+                saveToStorage();
+                renderBlogs();
+            }
+        }
+
+        function addComment(blogId) {
+            const input = document.getElementById(`commentInput-${blogId}`);
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            const newComment = {
+                id: Date.now(),
+                blogId,
+                authorId: currentUser.id,
+                authorName: currentUser.name,
+                text,
+                date: new Date().toLocaleDateString()
+            };
+
+            db.comments.push(newComment);
+            saveToStorage();
+            input.value = '';
+            renderBlogs();
+        }
+
+        function renderBlogs() {
+            const container = document.getElementById('blogsContainer');
+            
+            if (db.blogs.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No blogs yet!</h3>
+                        <p>Be the first to share your story</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = db.blogs.map(blog => {
+                const blogComments = db.comments.filter(c => c.blogId === blog.id);
+                const isAuthor = blog.authorId === currentUser.id;
+
+                return `
+                    <div class="blog-card">
+                        <div class="blog-header">
+                            <div>
+                                <h3>${blog.title}</h3>
+                                <div class="blog-meta">
+                                    By ${blog.authorName} • ${blog.date} at ${blog.time}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-content">${blog.content}</div>
+                        ${isAuthor ? `
+                            <div class="blog-actions">
+                                <button class="btn-small btn-delete" onclick="deleteBlog(${blog.id})">Delete</button>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="comments-section">
+                            <h4>💬 Comments (${blogComments.length})</h4>
+                            ${blogComments.map(comment => `
+                                <div class="comment">
+                                    <div class="comment-author">${comment.authorName}</div>
+                                    <div class="comment-text">${comment.text}</div>
+                                </div>
+                            `).join('')}
+                            <div class="comment-form">
+                                <input type="text" id="commentInput-${blog.id}" placeholder="Add a comment...">
+                                <button class="btn-small" onclick="addComment(${blog.id})">Post</button>
+                            </div>
+                        </div>
+    
